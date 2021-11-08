@@ -1,7 +1,7 @@
 
    
 resources:
- - name: resource_pipelines
+ - name: resource__pipelines
    type: GitRepo
    configuration:
      gitProvider: github_neha
@@ -16,22 +16,22 @@ resources:
 #        pullRequestUpdate: true
 
 pipelines:
-  - name: testing
+  - name: testing_
     steps:
       - name: myStep
         type: Bash
         configuration:
 #          nodePool: dynamic_aws
          inputResources: 
-           - name: resource_pipelines
+           - name: resource__pipelines
          integrations:
            - name: github_neha
         execution:
           onExecute:
             - printenv
-            - pushd $res_resource_pipelines_resourcePath
+            - pushd $res_resource__pipelines_resourcePath
             - ls
             - echo "hi"
           onSuccess:
-            - pushd $res_resource_pipelines_resourcePath
+            - pushd $res_resource__pipelines_resourcePath
             - ls
