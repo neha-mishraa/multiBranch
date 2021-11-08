@@ -1,0 +1,37 @@
+
+   
+resources:
+ - name: resource_pipelines
+   type: GitRepo
+   configuration:
+     gitProvider: github_neha
+     path: neha-mishraa/multiBranch
+     files: 
+       include: ^README.md$
+     branches:
+       include: ^{{gitBranch}}$
+#      buildOn:
+#        pullRequestCreate: true
+#      cancelPendingRunsOn:
+#        pullRequestUpdate: true
+
+pipelines:
+  - name: testing
+    steps:
+      - name: myStep
+        type: Bash
+        configuration:
+#          nodePool: dynamic_aws
+         inputResources: 
+           - name: resource_pipelines
+         integrations:
+           - name: github_neha
+        execution:
+          onExecute:
+            - printenv
+            - pushd $res_resource_pipelines_resourcePath
+            - ls
+            - echo "hi"
+          onSuccess:
+            - pushd $res_resource_pipelines_resourcePath
+            - ls
