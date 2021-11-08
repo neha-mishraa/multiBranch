@@ -6,8 +6,8 @@ resources:
    configuration:
      gitProvider: github_neha
      path: neha-mishraa/multiBranch
-     files: 
-       include: ^README.md$
+#      files: 
+#        include: ^README.md$
      branches:
        include: ^{{gitBranch}}$
 #      buildOn:
