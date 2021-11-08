@@ -7,7 +7,7 @@ resources:
      gitProvider: github_neha
      path: neha-mishraa/multiBranch
      files: 
-       include: ^README.md$
+       include: ^pipelines$
      branches:
        include: ^{{gitBranch}}$
 #      buildOn:
